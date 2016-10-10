@@ -148,7 +148,7 @@ class FileHandler extends ObjectAbstract implements SessionHandlerInterface
         /*# string */ $session_data
     )/*# : bool */ {
         $file = $this->getSessionFile($session_id);
-        return file_put_contents($file, $session_data);
+        return file_put_contents($file, $session_data) !== false;
     }
 
     /**

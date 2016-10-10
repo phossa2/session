@@ -57,7 +57,7 @@ class Session extends ObjectAbstract implements SessionInterface
     /**
      * session data
      *
-     * @var    array
+     * @var    array|null
      * @access protected
      */
     protected $data;
@@ -65,7 +65,7 @@ class Session extends ObjectAbstract implements SessionInterface
     /**
      * Init the session
      *
-     * @param  string $name session name
+     * @param  string $sessionName session name
      * @param  SessionHandlerInterface $handler session save handler
      * @param  DriverInterface $driver communication driver
      * @param  GeneratorInterface $generator id generator

@@ -69,6 +69,9 @@ class CookieDriver extends ObjectAbstract implements DriverInterface
      */
     public function __destruct()
     {
+        if (php_sapi_name() === 'cli') {
+            return;
+        }
         $this->syncCookies();
     }
 
@@ -114,10 +117,6 @@ class CookieDriver extends ObjectAbstract implements DriverInterface
      */
     protected function syncCookies()
     {
-        if (php_sapi_name() === 'cli') {
-            return;
-        }
-
         foreach ($this->cookies as $name => $id) {
             if (null === $id) {
                 setcookie($name, '', time() - 3600);
