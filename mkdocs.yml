@@ -1,0 +1,11 @@
+docs_dir: doc/book
+site_dir: doc/html
+pages:
+    - index.md
+    - Overview: overview.md
+    - Reference:
+        - "Reference": ref.md
+site_name: phossa2/session
+site_description: phossa2/session
+repo_url: 'https://github.com/phossa2/session'
+copyright: 'Copyright (c) 2016 Phossa.com</a>'
