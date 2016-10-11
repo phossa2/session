@@ -119,7 +119,7 @@ class StorageHandler extends ObjectAbstract implements SessionHandlerInterface
     {
         $file = $this->getSessionFile($session_id);
         if ($this->storage->has($file)) {
-            return $this->storage->get($file);
+            return (string) $this->storage->get($file);
         }
         // empty array
         return 'a:0:{}';
