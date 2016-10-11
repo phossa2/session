@@ -25,7 +25,7 @@ use Phossa2\Session\Message\Message;
  * @since   2.1.0 added
  */
 return [
-    Message::HANDLER_NOT_FOUND => '会话存储器在  "%s" 中没有设置',
     Message::SESSION_NOT_FOUND => '会话在  "%s" 中没有设置',
     Message::SESSION_STOPPED => '会话已经终止',
+    Message::SESSION_INVALID => '无效的会话  "%s" 来自 "%s"',
 ];

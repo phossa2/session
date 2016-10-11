@@ -28,11 +28,6 @@ use Phossa2\Shared\Message\Message as BaseMessage;
 class Message extends BaseMessage
 {
     /*
-     * Session handler not found in "%s"
-     */
-    const HANDLER_NOT_FOUND = 1610081416;
-
-    /*
      * Session not found in "%s"
      */
     const SESSION_NOT_FOUND = 1610081417;
@@ -42,12 +37,17 @@ class Message extends BaseMessage
      */
     const SESSION_STOPPED = 1610081418;
 
+    /*
+     * Invalid session "%s" from "%s"
+     */
+    const SESSION_INVALID = 1610081419;
+
     /**
      * {@inheritDoc}
      */
     protected static $messages = [
-        self::HANDLER_NOT_FOUND => 'Session handler not found in "%s"',
         self::SESSION_NOT_FOUND => 'Session not found in "%s"',
         self::SESSION_STOPPED => 'Session stopped already',
+        self::SESSION_INVALID => 'Invalid session "%s" from "%s"',
     ];
 }

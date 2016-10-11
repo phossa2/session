@@ -40,7 +40,7 @@ trait GeneratorAwareTrait
     public function setGenerator(GeneratorInterface $generator = null)
     {
         if (null === $generator) {
-            $this->generator = function() {
+            $this->generator = function () {
                 return md5(microtime(true) + rand(1, 10000));
             };
         } else {

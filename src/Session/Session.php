@@ -100,9 +100,18 @@ class Session extends ObjectAbstract implements SessionInterface
     public function start()
     {
         if (null === $this->data) {
+            // read data
             $this->data = unserialize(
                 $this->getHandler()->read($this->getId())
             );
+
+            // validate
+            if (!$this->isValid()) {
+                throw new RuntimeException(
+                    Message::get(Message::SESSION_INVALID, $this->getName()),
+                    Message::SESSION_INVALID
+                );
+            }
         }
         return $this;
     }
