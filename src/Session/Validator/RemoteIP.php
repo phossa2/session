@@ -56,8 +56,7 @@ class RemoteIp extends ObjectAbstract implements ValidatorInterface
      */
     public function __construct(array $denied = [], array $allowed = [])
     {
-        $this->allowed = $this->processPattern($allowed);
-        $this->denied = $this->processPattern($denied);
+        $this->setAllowed($allowed)->setDenied($denied);
     }
 
     /**
@@ -81,6 +80,32 @@ class RemoteIp extends ObjectAbstract implements ValidatorInterface
     }
 
     /**
+     * Set allowed patterns
+     *
+     * @param  array $patterns
+     * @return $this
+     * @access public
+     */
+    public function setAllowed(array $patterns)
+    {
+        $this->allowed = $this->processPattern($patterns);
+        return $this;
+    }
+
+    /**
+     * Set denied patterns
+     *
+     * @param  array $patterns
+     * @return $this
+     * @access public
+     */
+    public function setDenied(array $patterns)
+    {
+        $this->denied = $this->processPattern($patterns);
+        return $this;
+    }
+
+    /**
      * Match ip with patterns
      *
      * @param  string $ip
@@ -92,7 +117,7 @@ class RemoteIp extends ObjectAbstract implements ValidatorInterface
     {
         $num = ip2long($ip);
         foreach ($patterns as $pat) {
-            if ($num & $pat[1] == $pat[0]) {
+            if (($num & $pat[1]) == $pat[0]) {
                 return true;
             }
         }
@@ -116,7 +141,7 @@ class RemoteIp extends ObjectAbstract implements ValidatorInterface
 
             // fix
             $mask = $this->getMask($mask);
-            $addr = ip2long($addr) & $mask;
+            $addr = $addr & $mask;
 
             $result[] = [$addr, $mask];
         }
@@ -133,6 +158,6 @@ class RemoteIp extends ObjectAbstract implements ValidatorInterface
     protected function getMask(/*# int */ $length = 32)/*# : int */
     {
         $bin = substr(str_repeat('1', $length) . str_repeat('0', 32), 0, 32);
-        return bindec($bin);
+        return ip2long(long2ip(bindec($bin)));
     }
 }
