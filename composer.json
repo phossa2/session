@@ -18,8 +18,8 @@
     "require-dev": {
         "phpunit/phpunit": "4.*",
         "squizlabs/php_codesniffer": "2.*",
-        "phossa2/uuid": "2.*",
-        "phossa2/storage": "2.*"
+        "phossa2/uuid": "dev-master",
+        "phossa2/storage": "dev-master"
     },
     "autoload": {
         "psr-4": { "Phossa2\\Session\\": "src/Session/" }
