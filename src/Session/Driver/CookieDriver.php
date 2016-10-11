@@ -43,11 +43,11 @@ class CookieDriver extends ObjectAbstract implements DriverInterface
      * @var    string
      * @access protected
      */
-    protected $cookie_domain = null;
-    protected $cookie_path   = '/';
-    protected $cookie_ttl    = 0;
-    protected $cookie_secure = false;
-    protected $cookie_httponly = true;
+    protected $domain = null;
+    protected $path   = '/';
+    protected $ttl    = 0;
+    protected $secure = false;
+    protected $httponly = true;
 
     /**
      * Constructor
@@ -124,11 +124,11 @@ class CookieDriver extends ObjectAbstract implements DriverInterface
                 setcookie(
                     $name,
                     $id,
-                    $this->cookie_ttl ? (time() + $this->cookie_ttl) : 0,
-                    $this->cookie_path,
-                    $this->cookie_domain,
-                    $this->cookie_secure,
-                    $this->cookie_httponly
+                    $this->ttl ? (time() + $this->ttl) : 0,
+                    $this->path,
+                    $this->domain,
+                    $this->secure,
+                    $this->httponly
                 );
             }
         }
